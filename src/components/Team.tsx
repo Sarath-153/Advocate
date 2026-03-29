@@ -19,11 +19,11 @@ export default function Team() {
         transition={{ duration: 0.7 }}
         className="text-left mb-16"
       >
-        <p className="text-base font-semibold text-blue-600 mb-1">Our Team</p>
+        <p className="text-2xl md:text-4xl font-semibold text-sm mb-1">Our Team</p>
         <h2 className="text-3xl md:text-4xl font-bold text-[#1a1f3c]">Meet Our Legal Experts</h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {team.map((member, i) => (
           <motion.div
             key={i}
@@ -33,7 +33,7 @@ export default function Team() {
             className="text-center group"
           >
             {/* Image container — fits any image size */}
-            <div className="overflow-hidden rounded-xl mb-4 w-full aspect-[3/4] bg-gray-100">
+           <div className="overflow-hidden rounded-xl mb-4 w-full aspect-[4/4] bg-gray-100">
               <img
                 src={member.img}
                 alt={member.name}

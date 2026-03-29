@@ -1,6 +1,10 @@
+import { useInView } from "react-intersection-observer";
+
 export default function Contact() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
-    <section id="contact" className="py-24 px-6 md:px-20">
+    <section id="contact" ref={ref} className="bg-white py-16 px-5 md:px-20 scroll-mt-20">
       <h2 className="text-4xl font-bold text-center mb-12">Contact Us</h2>
 
       <form className="max-w-xl mx-auto space-y-4">
