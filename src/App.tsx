@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AboutStats from "./components/AboutStats";
 import Blog from "./components/Blog";
+import MapSection from "./components/MapSection";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Team />
       <Blog />
       <Contact />
+      <MapSection /> 
       <Footer />
     </div>
   );
