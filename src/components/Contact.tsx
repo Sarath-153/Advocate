@@ -1,7 +1,7 @@
 import { useInView } from "react-intersection-observer";
 
 export default function Contact() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <section id="contact" ref={ref} className="bg-white py-16 px-5 md:px-20 scroll-mt-20">
