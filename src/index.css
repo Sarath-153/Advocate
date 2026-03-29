@@ -1,13 +1,37 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Base font */
+body {
+  @apply bg-white text-gray-800;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Section spacing helper */
+.section {
+  @apply py-24 px-6 md:px-20;
+}
+
+/* Headings style */
+.heading {
+  @apply text-4xl md:text-5xl font-bold text-center mb-16;
+}
+
+/* Card shadow used across site */
+.card {
+  @apply bg-white rounded-2xl shadow-xl;
+}
+
+/* Button primary */
+.btn-primary {
+  @apply bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition;
+}
+html {
+  scroll-padding-top: 100px;
 }
