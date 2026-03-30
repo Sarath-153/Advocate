@@ -33,7 +33,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [links]);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
