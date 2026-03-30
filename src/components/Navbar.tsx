@@ -60,7 +60,7 @@ export default function Navbar() {
           className="text-xl font-bold cursor-pointer tracking-widest text-gray-800"
           onClick={() => scrollToSection("home")}
         >
-          LOGO
+          EVS Legal ⚖️
         </h1>
 
         {/* DESKTOP NAV */}
