@@ -1,17 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
 
-  const links = [
+  const links = useMemo(() => [
     { label: "Home", id: "home" },
     { label: "About Us", id: "about" },
     { label: "Services", id: "services" },
     { label: "Our Team", id: "team" },
     { label: "Blog", id: "blog" },
-  ];
+  ], []);
 
   // ✅ Track active section on scroll
   useEffect(() => {
