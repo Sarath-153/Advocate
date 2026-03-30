@@ -10,7 +10,7 @@ export default function Footer() {
 
       {/* MOBILE LAYOUT */}
       <div className="md:hidden flex flex-col items-center text-center gap-6 mb-8">
-        <h2 className="text-2xl font-bold">LOGO</h2>
+        <h2 className="text-2xl font-bold">EVS Legal</h2>
         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
           Trusted legal support for every client. Clear, reliable, and strategic.
         </p>
@@ -24,7 +24,7 @@ export default function Footer() {
       {/* DESKTOP LAYOUT */}
       <div className="hidden md:grid grid-cols-4 gap-8 mb-10">
         <div>
-          <h2 className="text-2xl font-bold mb-4">LOGO</h2>
+          <h2 className="text-2xl font-bold mb-4">EVS Legal</h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Trusted legal support for every client. Clear, reliable, and strategic.
           </p>
