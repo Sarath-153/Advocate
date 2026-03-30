@@ -20,22 +20,39 @@ const About: React.FC = () => {
     { end: 100,  suffix: "+", label: "Agreements Drafted" },
   ];
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.12 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.92 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+    },
+  };
+
   const fadeUp = (delay = 0) => ({
     initial: { y: 40, opacity: 0 },
     animate: inView ? { y: 0, opacity: 1 } : {},
-    transition: { duration: 0.7, delay, ease: "easeInOut" as const },
+    transition: { duration: 0.7, delay, ease: "easeOut" as const },
   });
 
   const fadeLeft = (delay = 0) => ({
-    initial: { x: -40, opacity: 0 },
+    initial: { x: -50, opacity: 0 },
     animate: inView ? { x: 0, opacity: 1 } : {},
-    transition: { duration: 0.7, delay, ease: "easeInOut" as const },
+    transition: { duration: 0.7, delay, ease: "easeOut" as const },
   });
 
   const fadeRight = (delay = 0) => ({
-    initial: { x: 40, opacity: 0 },
+    initial: { x: 50, opacity: 0 },
     animate: inView ? { x: 0, opacity: 1 } : {},
-    transition: { duration: 0.7, delay, ease: "easeInOut" as const },
+    transition: { duration: 0.7, delay, ease: "easeOut" as const },
   });
 
   return (
@@ -44,18 +61,18 @@ const About: React.FC = () => {
       ref={ref}
       className="relative bg-[#f9f8f6] py-16 md:py-24 px-5 md:px-16 lg:px-24 overflow-hidden"
     >
-      {/* Subtle background accent */}
+      {/* Background accents */}
       <div className="pointer-events-none absolute top-0 right-0 w-72 h-72 bg-[#1a1f3c]/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
       <div className="pointer-events-none absolute bottom-0 left-0 w-56 h-56 bg-[#c9a84c]/10 rounded-full blur-2xl -translate-x-1/3 translate-y-1/3" />
 
       <div className="relative max-w-6xl mx-auto">
 
-        {/* ── SECTION LABEL + HEADING ── */}
+        {/* ── HEADING ── */}
         <motion.div {...fadeUp(0)} className="mb-10 md:mb-16">
-          <span  className="text-2xl md:text-4xl font-semibold text-[#1a1f3c]">
-           About Us
+          <span className="text-2xl md:text-4xl font-semibold text-[#1a1f3c]">
+            About Us
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1a1f3c] leading-tight max-w-xl">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#1a1f3c] leading-tight max-w-xl mt-1">
             Know More About <br className="hidden md:block" />
             Our Legal Firm
           </h2>
@@ -63,31 +80,53 @@ const About: React.FC = () => {
         </motion.div>
 
         {/* ── STATS GRID ── */}
-        {/* Mobile: 2-col grid | Desktop: 5-col row */}
         <motion.div
-          {...fadeUp(0.1)}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-12 md:mb-20"
         >
           {stats.map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(26,31,60,0.1)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className={`relative bg-white rounded-2xl px-4 py-5 md:py-7 flex flex-col items-center justify-center shadow-sm border border-gray-100 cursor-default
+              variants={cardVariants}
+              whileHover={{
+                y: -6,
+                boxShadow: "0 16px 40px rgba(26,31,60,0.13)",
+                transition: { type: "spring", stiffness: 300, damping: 18 },
+              }}
+              className={`relative bg-white rounded-2xl px-4 py-5 md:py-7 flex flex-col items-center justify-center shadow-sm border border-gray-100 cursor-default overflow-hidden
                 ${i === 4 ? "col-span-2 md:col-span-1" : ""}
               `}
             >
-              {/* Gold top bar */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-[#c9a84c] rounded-full" />
+            
 
-              <div className="text-2xl md:text-4xl font-bold text-[#1a1f3c] leading-none">
-                {inView ? (
-                  <CountUp start={0} end={item.end} duration={2.2} delay={0.3 + i * 0.1} />
-                ) : (
-                  0
-                )}
-                <span className="text-[#c9a84c]">{item.suffix}</span>
-              </div>
+              {/* Shimmer sweep on hover */}
+              <motion.div
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "200%" }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none"
+              />
+
+              {/* Count — BLACK */}
+             <div className="text-2xl md:text-4xl font-bold text-black flex items-center justify-center">
+  <span className="font-mono tabular-nums">
+    {inView ? (
+      <CountUp
+        start={0}
+        end={item.end}
+        duration={2.4}
+        delay={0.4 + i * 0.1}
+        separator=","
+      />
+    ) : (
+      <span>0</span>
+    )}
+    <span className="text-black">+</span>
+  </span>
+</div>
+
               <p className="mt-2 text-gray-500 text-xs md:text-sm text-center leading-snug font-medium">
                 {item.label}
               </p>
@@ -95,10 +134,10 @@ const About: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* ── MAIN CONTENT GRID ── */}
+        {/* ── MAIN CONTENT ── */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
 
-          {/* LEFT — Heading + Description */}
+          {/* LEFT */}
           <motion.div {...fadeLeft(0.2)} className="flex flex-col gap-6">
             <h3 className="text-2xl md:text-4xl font-bold text-[#1a1f3c] leading-snug">
               We Provide Clear and Trusted Legal Support for Every Client
@@ -111,10 +150,13 @@ const About: React.FC = () => {
               We provide clear and reliable legal support to help you understand
               your situation and make the right decisions with confidence.
             </p>
-
-            {/* Divider pill */}
             <div className="flex items-center gap-3 mt-2">
-              <div className="w-10 h-[2px] bg-[#c9a84c]" />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="w-10 h-[2px] bg-[#c9a84c] origin-left"
+              />
               <span className="text-xs tracking-widest uppercase text-gray-400 font-medium">
                 Trusted. Clear. Reliable.
               </span>
