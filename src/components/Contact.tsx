@@ -131,7 +131,7 @@ export default function Contact() {
       {/* MOBILE: Info Tab */}
       {activeTab === "info" && (
         <div className="md:hidden space-y-4">
-          <a href="tel:+919876543210" className="flex items-center gap-4 bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+          <a href="tel:+91 95005 73949" className="flex items-center gap-4 bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
             <div className="w-11 h-11 rounded-xl bg-[#1a1f3c] flex items-center justify-center shrink-0">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -139,7 +139,7 @@ export default function Contact() {
             </div>
             <div className="flex-1">
               <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Phone</p>
-              <p className="text-[#1a1f3c] font-semibold text-sm mt-0.5">+91 98765 43210</p>
+              <p className="text-[#1a1f3c] font-semibold text-sm mt-0.5">+91 95005 73949</p>
             </div>
             <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
