@@ -16,7 +16,7 @@ export default function Footer() {
         </p>
         <div className="w-full border-t border-white/10 pt-6 flex flex-col gap-3 text-gray-400 text-sm">
           <p className="flex items-center justify-center gap-2">📍 No.:D-88 Sampath Nagar, Erode-63811</p>
-          <p className="flex items-center justify-center gap-2">📞 +91 98765 43210</p>
+          <p className="flex items-center justify-center gap-2">📞 +91 95005 73949</p>
           <p className="flex items-center justify-center gap-2">✉️ sriarjunac@gmail.com</p>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Footer() {
           <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h3>
           <ul className="space-y-3 text-gray-400 text-sm">
             <li className="flex items-start gap-2"><span>📍</span><span>No. D-88 Sampath Nagar, Erode-63811</span></li>
-            <li className="flex items-center gap-2"><span>📞</span><span>+91 98765 43210</span></li>
+            <li className="flex items-center gap-2"><span>📞</span><span>+91 95005 73949</span></li>
             <li className="flex items-center gap-2"><span>✉️</span><span>sriarjunac@gmail.com</span></li>
           </ul>
         </div>
