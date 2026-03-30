@@ -1,6 +1,6 @@
 export default function MapSection() {
-  const lat = 11.356290;
-  const lng = 77.319398;
+  const lat = 11.338886;
+  const lng = 77.705369;
   const embedUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
   const mapsUrl = `https://maps.google.com/maps?q=${lat},${lng}`;
 

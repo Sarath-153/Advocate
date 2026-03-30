@@ -128,7 +128,7 @@ export default function WhyChooseUs() {
           <img
             src="/images/weightequal.png"
             alt="Legal scales"
-            className="w-72 object-contain drop-shadow-xl"
+            className="w-90 object-contain drop-shadow-xl"
           />
         </motion.div>
 

@@ -13,14 +13,14 @@ export default function App() {
   return (
     <div className="font-sans">
       <Navbar />
-      <Hero />
-      <AboutStats />
-      <Services />
-      <WhyChooseUs />
-      <Team />
-      <Blog />
-      <Contact />
-      <MapSection /> 
+      <section id="home"><Hero /></section>
+      <section id="about"><AboutStats /></section>
+      <section id="services"><Services /></section>
+      <section id="whychooseus"><WhyChooseUs /></section>
+      <section id="team"><Team /></section>
+      <section id="blog"><Blog /></section>
+      <section id="contact"><Contact /></section>
+      <MapSection />
       <Footer />
     </div>
   );

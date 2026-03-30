@@ -15,9 +15,11 @@ const About: React.FC = () => {
   });
 
   const stats: StatItem[] = [
-    { end: 5, label: "Years of Experience" },
-    { end: 50, label: "Cases Handled" },
-    { end: 10, label: "Practice Areas" },
+    { end: 10, label: "Years of Experience" },
+    { end: 500, label: "Cases Disposed" },
+    { end: 100, label: "Due Diligence Assisted" },
+    { end: 1000, label: "Opinions Delivered" },
+    { end: 100, label: "Agreements Drafted" },
   ];
 
   return (
@@ -111,7 +113,7 @@ const About: React.FC = () => {
             >
               <div className="overflow-hidden rounded-xl shadow-lg">
                 <img
-                  src="/images/court.png"
+                  src="/images/court1.png"
                   alt="court"
                   className="w-full h-52 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 />

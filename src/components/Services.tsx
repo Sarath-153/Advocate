@@ -44,8 +44,8 @@ export default function Services() {
         transition={{ duration: 0.7 }}
         className="mb-8 md:mb-14"
       >
-        <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-1">
-          What We Do
+        <p  className="text-2xl md:text-4xl font-semibold text-[#1a1f3c]">
+          Services
         </p>
         <h2 className="text-2xl md:text-4xl font-bold text-[#1a1f3c]">
           Legal Support We Offer
