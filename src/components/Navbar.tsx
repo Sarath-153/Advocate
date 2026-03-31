@@ -13,7 +13,6 @@ export default function Navbar() {
     { label: "Blog", id: "blog" },
   ], []);
 
-  // ✅ Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector("nav");
@@ -43,7 +42,7 @@ export default function Navbar() {
       const top = section.getBoundingClientRect().top + window.scrollY - navHeight;
       window.scrollTo({ top, behavior: "smooth" });
     }
-    setActiveId(id); // ✅ Highlight immediately on click
+    setActiveId(id);
     setMenuOpen(false);
   };
 
@@ -55,13 +54,21 @@ export default function Navbar() {
         transition={{ duration: 0.6 }}
         className="flex justify-between items-center px-6 md:px-10 py-4 bg-white fixed w-full z-50 shadow-sm"
       >
-        {/* LOGO */}
-        <h1
-          className="text-xl font-bold cursor-pointer tracking-widest text-gray-800"
+        {/* LOGO WITH NAME */}
+        <div
+          className="flex items-center gap-2 cursor-pointer group"
           onClick={() => scrollToSection("home")}
         >
-          EVS Legal ⚖️
-        </h1>
+          
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest text-gray-800 leading-none group-hover:text-[#1a1f3c] transition-colors duration-200">
+            EVS Legal
+          </h1>
+          <img
+            src="/Logo.png"
+            alt="EVS Legal Logo"
+            className="h-7 w-8 md:h-10 md:w-11 object-contain "
+          />
+        </div>
 
         {/* DESKTOP NAV */}
         <div className="hidden md:flex items-center gap-2 font-medium text-gray-700">
@@ -92,14 +99,29 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={() => scrollToSection("contact")}
-            className="border border-gray-800 text-gray-800 px-4 py-1.5 rounded text-sm"
+            className="border border-gray-800 text-gray-800 px-4 py-1.5 rounded text-sm hover:bg-gray-800 hover:text-white transition-all duration-200"
           >
             Contact us
           </button>
-          <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col gap-1.5 p-1">
-            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col gap-1.5 p-1"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
           </button>
         </div>
       </motion.nav>
