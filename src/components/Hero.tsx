@@ -7,26 +7,27 @@ export default function Hero() {
       {/* ───── MOBILE LAYOUT ───── */}
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
 
-        {/* Image with text overlay on left */}
+        {/* Full image with overlay text */}
         <div
           className="relative w-full bg-cover bg-center"
           style={{
             backgroundImage: "url('/images/statue1.jpeg')",
-            height: "260px",
+            height: "380px",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/20 via-transparent to-white" />
+          {/* Gradient: dark top → semi-transparent bottom so image is visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/60 via-[#1a1f3c]/30 to-white/80" />
 
-          {/* Text — left side over image */}
-          <div className="absolute inset-0 flex flex-col justify-center px-5 z-10">
-            <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full mb-3 w-fit">
+          {/* Text anchored to bottom of image */}
+          <div className="absolute inset-0 flex flex-col justify-end px-5 pb-5 z-10">
+            <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-white/90 px-3 py-1 rounded-full mb-3 w-fit">
               Trusted Legal Services
             </span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="text-2xl font-bold leading-snug text-[#1a1f3c] max-w-[55%]"
+              className="text-2xl font-bold leading-snug text-[#1a1f3c]"
             >
               We're Here to Help You with Your Legal Needs
             </motion.h1>
@@ -34,17 +35,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-gray-700 text-xs leading-relaxed mt-2 max-w-[55%]"
+              className="text-gray-700 text-xs leading-relaxed mt-2"
             >
               From advice to action, we support you at every step with simple and reliable legal services.
             </motion.p>
           </div>
-
-          {/* No badge/circle on mobile */}
         </div>
 
-        {/* CTA button — directly below image */}
-        <div className="bg-white px-6 pt-6 pb-10">
+        {/* CTA button below image */}
+        <div className="bg-white px-6 pt-5 pb-10">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +54,10 @@ export default function Hero() {
               const el = document.getElementById("contact");
               const nav = document.querySelector("nav");
               if (el && nav) {
-                const top = el.getBoundingClientRect().top + window.scrollY - nav.getBoundingClientRect().height;
+                const top =
+                  el.getBoundingClientRect().top +
+                  window.scrollY -
+                  nav.getBoundingClientRect().height;
                 window.scrollTo({ top, behavior: "smooth" });
               }
             }}
@@ -66,7 +68,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ───── DESKTOP LAYOUT (unchanged) ───── */}
+      {/* ───── DESKTOP LAYOUT ───── */}
       <div
         className="hidden md:flex items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: "url('/images/statue1.jpeg')" }}
@@ -83,13 +85,14 @@ export default function Hero() {
             We're Here to Help You with Your Legal Needs
           </h1>
           <p className="mt-6 text-gray-600 text-base max-w-md">
-            From advice to action, we support you at every step with simple and reliable legal services.
+            From advice to action, we support you at every step with simple and
+            reliable legal services.
           </p>
         </motion.div>
 
-        {/* Rotating badge — desktop only */}
+        {/* Rotating badge — DESKTOP ONLY (hidden md:block prevents mobile bleed) */}
         <div
-          className="absolute z-10"
+          className="absolute z-10 hidden md:block"
           style={{ right: "26%", top: "11%", width: "160px", height: "160px" }}
         >
           <motion.div
@@ -104,7 +107,12 @@ export default function Hero() {
                   d="M 80,80 m -55,0 a 55,55 0 1,1 110,0 a 55,55 0 1,1 -110,0"
                 />
               </defs>
-              <text fill="#1a1f3c" fontSize="11.5" fontWeight="600" letterSpacing="2.5">
+              <text
+                fill="#1a1f3c"
+                fontSize="11.5"
+                fontWeight="600"
+                letterSpacing="2.5"
+              >
                 <textPath href="#circlePathDesktop">
                   ★ Strategic Legal Solutions You Can Trust ★
                 </textPath>
@@ -113,7 +121,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
     </section>
   );
 }
