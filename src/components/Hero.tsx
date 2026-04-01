@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative">
+    <section id="home">
 
       {/* ───── MOBILE LAYOUT ───── */}
       <div
@@ -13,15 +13,12 @@ export default function Hero() {
           paddingTop: "64px",
         }}
       >
-        {/* Dark overlay so text is readable */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f3c]/80 via-[#1a1f3c]/30 to-transparent" />
 
-        {/* Text content at bottom of image */}
-        <div className="relative z-10 px-6 pb-6">
+        <div className="relative z-10 px-6 pb-8">
           <span className="inline-block text-xs font-semibold text-white uppercase tracking-widest border border-white/60 px-3 py-1 rounded-full mb-4 w-fit">
             Trusted Legal Services
           </span>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +27,6 @@ export default function Hero() {
           >
             We're Here to Help You with Your Legal Needs
           </motion.h1>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -39,7 +35,6 @@ export default function Hero() {
           >
             From advice to action, we support you at every step with simple and reliable legal services.
           </motion.p>
-
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,12 +60,15 @@ export default function Hero() {
       </div>
 
       {/* ───── DESKTOP LAYOUT ───── */}
+      {/* ✅ Badge is INSIDE this div — so it only exists when this div renders */}
       <div
         className="hidden md:flex relative items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: "url('/images/statue1.jpeg')" }}
       >
+        {/* overlay */}
         <div className="absolute inset-0 bg-white/60" />
 
+        {/* headline */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -86,7 +84,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* ✅ Rotating badge is NOW INSIDE the desktop div — never shows on mobile */}
+        {/* ✅ Badge lives HERE — inside hidden md:flex, never leaks to mobile */}
         <div
           className="absolute z-10"
           style={{ right: "26%", top: "11%", width: "160px", height: "160px" }}
@@ -111,7 +109,9 @@ export default function Hero() {
             </svg>
           </motion.div>
         </div>
+
       </div>
+      {/* ← desktop div closes HERE — badge is fully inside it */}
 
     </section>
   );
