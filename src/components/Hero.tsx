@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex flex-col md:block md:h-screen">
+    <section id="home" className="relative flex flex-col">
 
-      {/* ───── MOBILE LAYOUT ───── */}
+      {/* ───── MOBILE LAYOUT (unchanged) ───── */}
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
 
         {/* Image with text overlay on left */}
@@ -39,8 +39,6 @@ export default function Hero() {
               From advice to action, we support you at every step with simple and reliable legal services.
             </motion.p>
           </div>
-
-          {/* No badge/circle on mobile */}
         </div>
 
         {/* CTA button — directly below image */}
@@ -66,11 +64,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ───── DESKTOP LAYOUT (unchanged) ───── */}
+      {/* ───── DESKTOP LAYOUT ───── */}
+      {/* FIX: Added `relative` here so the overlay and badge are positioned
+          relative to THIS div — not the section. This fixes alignment in
+          desktop-site mode on mobile. */}
       <div
-        className="hidden md:flex items-center h-screen bg-cover bg-center"
+        className="hidden md:flex relative items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: "url('/images/statue1.jpeg')" }}
       >
+        {/* Overlay — now correctly contained inside the desktop div */}
         <div className="absolute inset-0 bg-white/60" />
 
         <motion.div
@@ -87,7 +89,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Rotating badge — desktop only */}
+        {/* Rotating badge — now correctly contained inside the desktop div */}
         <div
           className="absolute z-10"
           style={{ right: "26%", top: "11%", width: "160px", height: "160px" }}
