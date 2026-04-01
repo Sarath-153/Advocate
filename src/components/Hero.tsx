@@ -7,7 +7,6 @@ export default function Hero() {
       {/* ───── MOBILE LAYOUT (unchanged) ───── */}
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
 
-        {/* Image with text overlay on left */}
         <div
           className="relative w-full bg-cover bg-center"
           style={{
@@ -17,7 +16,6 @@ export default function Hero() {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/20 via-transparent to-white" />
 
-          {/* Text — left side over image */}
           <div className="absolute inset-0 flex flex-col justify-center px-5 z-10">
             <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full mb-3 w-fit">
               Trusted Legal Services
@@ -41,7 +39,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* CTA button — directly below image */}
         <div className="bg-white px-6 pt-6 pb-10">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +50,10 @@ export default function Hero() {
               const el = document.getElementById("contact");
               const nav = document.querySelector("nav");
               if (el && nav) {
-                const top = el.getBoundingClientRect().top + window.scrollY - nav.getBoundingClientRect().height;
+                const top =
+                  el.getBoundingClientRect().top +
+                  window.scrollY -
+                  nav.getBoundingClientRect().height;
                 window.scrollTo({ top, behavior: "smooth" });
               }
             }}
@@ -65,16 +65,32 @@ export default function Hero() {
       </div>
 
       {/* ───── DESKTOP LAYOUT ───── */}
-      {/* FIX: Added `relative` here so the overlay and badge are positioned
-          relative to THIS div — not the section. This fixes alignment in
-          desktop-site mode on mobile. */}
-      <div
-        className="hidden md:flex relative items-center h-screen bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/statue1.jpeg')" }}
-      >
-        {/* Overlay — now correctly contained inside the desktop div */}
+      <div className="hidden md:flex relative items-center h-screen overflow-hidden">
+
+        {/* 
+          KEY FIX: Use a real <img> with object-cover instead of CSS background-image.
+          
+          Root cause: In "desktop site" mode on mobile, the browser renders a virtual
+          980px-wide viewport scaled down to fit the phone. This makes 100vh (h-screen)
+          compute to ~2000px+. CSS `bg-cover bg-center` places the image at the vertical
+          center of this giant container, leaving a large white gap at the top where the
+          badge was floating with no image behind it.
+          
+          A positioned <img> with object-cover always fills inset-0 (the full container)
+          regardless of how tall the container is, fixing the alignment for all viewports.
+        -->
+        */}
+        <img
+          src="/images/statue1.jpeg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+
+        {/* White overlay */}
         <div className="absolute inset-0 bg-white/60" />
 
+        {/* Hero text */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +105,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Rotating badge — now correctly contained inside the desktop div */}
+        {/* Rotating badge */}
         <div
           className="absolute z-10"
           style={{ right: "26%", top: "11%", width: "160px", height: "160px" }}
