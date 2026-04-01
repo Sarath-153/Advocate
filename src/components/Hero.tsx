@@ -6,7 +6,6 @@ export default function Hero() {
 
       {/* ───── MOBILE LAYOUT (unchanged) ───── */}
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
-
         <div
           className="relative w-full bg-cover bg-center"
           style={{
@@ -15,7 +14,6 @@ export default function Hero() {
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/20 via-transparent to-white" />
-
           <div className="absolute inset-0 flex flex-col justify-center px-5 z-10">
             <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full mb-3 w-fit">
               Trusted Legal Services
@@ -65,29 +63,32 @@ export default function Hero() {
       </div>
 
       {/* ───── DESKTOP LAYOUT ───── */}
+      {/*
+        THE FIX (two layers):
+        1. The wrapper div uses overflow-hidden + h-screen.
+        2. The background image is a real <img> with object-cover so it ALWAYS
+           fills the full container — even when h-screen is 2000px+ in desktop-
+           site mode on mobile (where vh units are inflated by the browser's
+           zoom-out scaling).
+      */}
       <div className="hidden md:flex relative items-center h-screen overflow-hidden">
 
-        {/* 
-          KEY FIX: Use a real <img> with object-cover instead of CSS background-image.
-          
-          Root cause: In "desktop site" mode on mobile, the browser renders a virtual
-          980px-wide viewport scaled down to fit the phone. This makes 100vh (h-screen)
-          compute to ~2000px+. CSS `bg-cover bg-center` places the image at the vertical
-          center of this giant container, leaving a large white gap at the top where the
-          badge was floating with no image behind it.
-          
-          A positioned <img> with object-cover always fills inset-0 (the full container)
-          regardless of how tall the container is, fixing the alignment for all viewports.
-        -->
-        */}
+        {/* Full-cover background image — reliable across all viewport sizes */}
         <img
           src="/images/statue1.jpeg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
         />
 
-        {/* White overlay */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-white/60" />
 
         {/* Hero text */}
@@ -101,7 +102,8 @@ export default function Hero() {
             We're Here to Help You with Your Legal Needs
           </h1>
           <p className="mt-6 text-gray-600 text-base max-w-md">
-            From advice to action, we support you at every step with simple and reliable legal services.
+            From advice to action, we support you at every step with simple and
+            reliable legal services.
           </p>
         </motion.div>
 
