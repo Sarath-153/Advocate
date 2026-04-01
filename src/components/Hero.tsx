@@ -7,14 +7,9 @@ export default function Hero() {
       {/* ───── MOBILE LAYOUT (unchanged) ───── */}
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
         <div
-  className="hidden md:flex items-center h-screen"
-  style={{
-    backgroundImage: "url('/images/statue1.jpeg')",
-    backgroundSize: "cover",
-    backgroundPosition: "top center",
-    backgroundRepeat: "no-repeat",
-  }}
->
+          className="relative w-full bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/statue1.jpeg')", height: "260px" }}
+        >
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/20 via-transparent to-white" />
           <div className="absolute inset-0 flex flex-col justify-center px-5 z-10">
             <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full mb-3 w-fit">
