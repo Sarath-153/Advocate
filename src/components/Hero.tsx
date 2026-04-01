@@ -8,10 +8,7 @@ export default function Hero() {
       <div className="md:hidden flex flex-col" style={{ paddingTop: "64px" }}>
         <div
           className="relative w-full bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/statue1.jpeg')",
-            height: "260px",
-          }}
+          style={{ backgroundImage: "url('/images/statue1.jpeg')", height: "260px" }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f3c]/20 via-transparent to-white" />
           <div className="absolute inset-0 flex flex-col justify-center px-5 z-10">
@@ -48,10 +45,7 @@ export default function Hero() {
               const el = document.getElementById("contact");
               const nav = document.querySelector("nav");
               if (el && nav) {
-                const top =
-                  el.getBoundingClientRect().top +
-                  window.scrollY -
-                  nav.getBoundingClientRect().height;
+                const top = el.getBoundingClientRect().top + window.scrollY - nav.getBoundingClientRect().height;
                 window.scrollTo({ top, behavior: "smooth" });
               }
             }}
@@ -63,61 +57,89 @@ export default function Hero() {
       </div>
 
       {/* ───── DESKTOP LAYOUT ───── */}
-      {/*
-        THE FIX (two layers):
-        1. The wrapper div uses overflow-hidden + h-screen.
-        2. The background image is a real <img> with object-cover so it ALWAYS
-           fills the full container — even when h-screen is 2000px+ in desktop-
-           site mode on mobile (where vh units are inflated by the browser's
-           zoom-out scaling).
-      */}
-      <div className="hidden md:flex relative items-center h-screen overflow-hidden">
-
-        {/* Full-cover background image — reliable across all viewport sizes */}
+      {/* All critical styles are inline to avoid Tailwind resolution issues
+          in desktop-site mode on mobile browsers. */}
+      <div
+        className="hidden md:flex"
+        style={{
+          position: "relative",
+          alignItems: "center",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background image — <img> with objectFit fills the full container
+            reliably even when 100vh computes to 2000px+ in desktop-site mode */}
         <img
           src="/images/statue1.jpeg"
           alt=""
           aria-hidden="true"
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
+            zIndex: 0,
           }}
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-white/60" />
+        {/* White overlay — inline rgba so it is never overridden by browser themes */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.60)",
+            zIndex: 1,
+          }}
+        />
 
         {/* Hero text */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 px-20 max-w-2xl"
+          style={{ position: "relative", zIndex: 2, paddingLeft: "5rem", maxWidth: "42rem" }}
         >
-          <h1 className="text-6xl font-bold leading-tight text-[#1a1f3c]">
+          <h1
+            style={{
+              fontSize: "3.75rem",
+              fontWeight: 700,
+              lineHeight: 1.2,
+              color: "#1a1f3c",
+            }}
+          >
             We're Here to Help You with Your Legal Needs
           </h1>
-          <p className="mt-6 text-gray-600 text-base max-w-md">
-            From advice to action, we support you at every step with simple and
-            reliable legal services.
+          <p style={{ marginTop: "1.5rem", color: "#4b5563", fontSize: "1rem", maxWidth: "28rem" }}>
+            From advice to action, we support you at every step with simple and reliable legal services.
           </p>
         </motion.div>
 
-        {/* Rotating badge */}
+        {/* Rotating badge — positioned relative to this container */}
         <div
-          className="absolute z-10"
-          style={{ right: "26%", top: "11%", width: "160px", height: "160px" }}
+          style={{
+            position: "absolute",
+            right: "26%",
+            top: "11%",
+            width: "160px",
+            height: "160px",
+            zIndex: 2,
+          }}
         >
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="w-full h-full"
+            style={{ width: "100%", height: "100%" }}
           >
-            <svg viewBox="0 0 160 160" className="w-full h-full">
+            <svg viewBox="0 0 160 160" style={{ width: "100%", height: "100%" }}>
               <defs>
                 <path
                   id="circlePathDesktop"
