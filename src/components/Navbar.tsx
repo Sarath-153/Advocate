@@ -52,21 +52,22 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="flex justify-between items-center px-6 md:px-10 py-4 bg-white fixed w-full z-50 shadow-sm"
+        // ✅ Fixed height — py-4 removed so logo size never stretches the navbar
+        className="flex justify-between items-center px-6 md:px-10 bg-white fixed w-full z-50 shadow-sm h-16 md:h-20"
       >
         {/* LOGO WITH NAME */}
         <div
           className="flex items-center gap-2 cursor-pointer group"
           onClick={() => scrollToSection("home")}
         >
-          
           <h1 className="text-xl md:text-2xl font-bold tracking-widest text-gray-800 leading-none group-hover:text-[#1a1f3c] transition-colors duration-200">
             EVS Legal
           </h1>
+          {/* ✅ Logo is now larger — navbar height stays fixed at h-16/h-20 */}
           <img
             src="/Logo.png"
             alt="EVS Legal Logo"
-            className="h-20 w-22 md:h-16 md:w-18 object-contain"
+            className="h-10 w-11 md:h-14 md:w-16 object-contain"
           />
         </div>
 
@@ -107,26 +108,15 @@ export default function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col gap-1.5 p-1"
           >
-            <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
         </div>
       </motion.nav>
 
       {/* MOBILE MENU DROPDOWN */}
+      {/* ✅ top-16 matches the fixed h-16 navbar on mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -134,7 +124,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-[64px] left-0 right-0 bg-white z-40 shadow-lg px-6 py-6 flex flex-col gap-4 md:hidden"
+            className="fixed top-16 left-0 right-0 bg-white z-40 shadow-lg px-6 py-6 flex flex-col gap-4 md:hidden"
           >
             {links.map((link) => (
               <button
