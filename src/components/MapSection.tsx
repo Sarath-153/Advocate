@@ -1,9 +1,8 @@
 export default function MapSection() {
-  const lat = 11.338886;
-  const lng = 77.705369;
+  const lat = 11.338884970404239;
+  const lng =  77.70538463194569;
   const embedUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
   const mapsUrl = `https://maps.google.com/maps?q=${lat},${lng}`;
-
   return (
     <section className="bg-white px-4 sm:px-8 md:px-20 py-12 md:py-16">
       

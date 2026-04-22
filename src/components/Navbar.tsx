@@ -66,7 +66,7 @@ export default function Navbar() {
           <img
             src="/Logo.png"
             alt="EVS Legal Logo"
-            className="h-7 w-8 md:h-10 md:w-11 object-contain "
+            className="h-20 w-22 md:h-16 md:w-18 object-contain"
           />
         </div>
 

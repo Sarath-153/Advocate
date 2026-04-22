@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const team = [
-  { name: "Arun Sharma", role: "Senior Criminal Lawyer", img: "/images/Member.jpeg" },
-  { name: "Priya Menon", role: "Corporate Law Specialist", img: "/images/.png" },
-  { name: "Vikram Iyer", role: "Family Law Advisor", img: "/images/.png" },
-  { name: "Deepa Nair", role: "Civil Litigation Expert", img: "/images/.png" },
+  { name: "A C Srinivas", role: "Partner", img: "/images/Member.jpeg" },
+  { name: "A Vivek", role: "Partner", img: "/images/.png" },
+  { name: "P Eswaramoorthy", role: "Partner", img: "/images/.png" },
+  { name: "Tamilparithy", role: "Associate", img: "/images/.png" },
+  { name: "Kavin ", role: "Associate", img: "/images/.png" },
 ];
 
 export default function Team() {
