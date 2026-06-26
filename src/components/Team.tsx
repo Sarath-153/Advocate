@@ -5,7 +5,6 @@ const team = [
   { name: "A C Srinivas", role: "Partner", img: "/images/mem1.png" },
   { name: "A Vivek", role: "Partner", img: "/images/mem2.png" },
   { name: "P Eswaramoorthy", role: "Partner", img: "/images/mem3.png" },
-  { name: "Tamilparithy", role: "Associate", img: "/images/mem4.png" },
   { name: "Kavin ", role: "Associate", img: "/images/mem5.png" },
 ];
 
